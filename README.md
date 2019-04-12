@@ -4,4 +4,5 @@
 1. AWS basic
 1. HTTP web server test
 1. AWS ASG test
-1. ... updating!
+1. Tick Stack to AWS (single cluster + multi cluster)
+... updating!
