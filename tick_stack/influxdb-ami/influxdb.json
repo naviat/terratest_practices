@@ -98,7 +98,7 @@
     "destination": "/tmp"
   },{
     "type": "file",
-    "source": "{{template_dir}}/../../modules/",
+    "source": "{{template_dir}}/../modules/",
     "destination": "/tmp/terraform-aws-influx/modules"
   },{
     "type": "shell",

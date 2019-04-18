@@ -5,13 +5,14 @@
 provider "aws" {
   # The AWS region in which all resources will be created
   region = "${var.aws_region}"
+  profile = "haidv"
 }
 
 module "tick" {
   # When using these modules in your own code, you will need to use a Git URL with a ref attribute that pins you
   # to a specific version of the modules, such as the following example:
   # source = "git::git@github.com:gruntwork-io/terraform-aws-influx.git//modules/influxdb-cluster?ref=v0.0.1"
-  source = "../../modules/influxdb-cluster"
+  source = "../modules/influxdb-cluster"
 
   cluster_name = "${var.cluster_name}"
   min_size     = 1
@@ -109,7 +110,7 @@ module "influxdb_security_group_rules" {
   # When using these modules in your own code, you will need to use a Git URL with a ref attribute that pins you
   # to a specific version of the modules, such as the following example:
   # source = "git::git@github.com:gruntwork-io/terraform-aws-influx.git//modules/influxdb-security-group-rules?ref=v0.0.1"
-  source = "../../modules/influxdb-security-group-rules"
+  source = "../modules/influxdb-security-group-rules"
 
   security_group_id = "${module.tick.security_group_id}"
 
@@ -131,7 +132,7 @@ module "chronograf_security_group_rules" {
   # When using these modules in your own code, you will need to use a Git URL with a ref attribute that pins you
   # to a specific version of the modules, such as the following example:
   # source = "git::git@github.com:gruntwork-io/terraform-aws-influx.git//modules/chronograf-security-group-rules?ref=v0.0.1"
-  source = "../../modules/chronograf-security-group-rules"
+  source = "../modules/chronograf-security-group-rules"
 
   security_group_id = "${module.tick.security_group_id}"
 
@@ -146,7 +147,7 @@ module "kapacitor_security_group_rules" {
   # When using these modules in your own code, you will need to use a Git URL with a ref attribute that pins you
   # to a specific version of the modules, such as the following example:
   # source = "git::git@github.com:gruntwork-io/terraform-aws-influx.git//modules/kapacitor-security-group-rules?ref=v0.0.1"
-  source = "../../modules/kapacitor-security-group-rules"
+  source = "../modules/kapacitor-security-group-rules"
 
   security_group_id = "${module.tick.security_group_id}"
 
@@ -166,7 +167,7 @@ module "influxdb_iam_policies" {
   # When using these modules in your own code, you will need to use a Git URL with a ref attribute that pins you
   # to a specific version of the modules, such as the following example:
   # source = "git::git@github.com:gruntwork-io/terraform-aws-influx.git//modules/influxdb-iam-policies?ref=v0.0.1"
-  source = "../../modules/influxdb-iam-policies"
+  source = "../modules/influxdb-iam-policies"
 
   iam_role_id = "${module.tick.iam_role_id}"
 }
@@ -179,7 +180,7 @@ module "load_balancer" {
   # When using these modules in your own code, you will need to use a Git URL with a ref attribute that pins you
   # to a specific version of the modules, such as the following example:
   # source = "git::git@github.com:gruntwork-io/terraform-aws-influx.git//modules/load-balancer?ref=v0.0.1"
-  source = "../../modules/load-balancer"
+  source = "../modules/load-balancer"
 
   name       = "${var.cluster_name}-lb"
   vpc_id     = "${data.aws_vpc.default.id}"
@@ -199,7 +200,7 @@ module "influxdb_target_group" {
   # When using these modules in your own code, you will need to use a Git URL with a ref attribute that pins you
   # to a specific version of the modules, such as the following example:
   # source = "git::git@github.com:gruntwork-io/terraform-aws-influx.git//modules/load-balancer-target-group?ref=v0.0.1"
-  source = "../../modules/load-balancer-target-group"
+  source = "../modules/load-balancer-target-group"
 
   target_group_name    = "${var.cluster_name}-itg"
   asg_name             = "${module.tick.asg_name}"
@@ -217,7 +218,7 @@ module "chronograf_target_group" {
   # When using these modules in your own code, you will need to use a Git URL with a ref attribute that pins you
   # to a specific version of the modules, such as the following example:
   # source = "git::git@github.com:gruntwork-io/terraform-aws-influx.git//modules/load-balancer-target-group?ref=v0.0.1"
-  source = "../../modules/load-balancer-target-group"
+  source = "../modules/load-balancer-target-group"
 
   target_group_name    = "${var.cluster_name}-ctg"
   asg_name             = "${module.tick.asg_name}"
@@ -235,7 +236,7 @@ module "kapacitor_target_group" {
   # When using these modules in your own code, you will need to use a Git URL with a ref attribute that pins you
   # to a specific version of the modules, such as the following example:
   # source = "git::git@github.com:gruntwork-io/terraform-aws-influx.git//modules/load-balancer-target-group?ref=v0.0.1"
-  source = "../../modules/load-balancer-target-group"
+  source = "../modules/load-balancer-target-group"
 
   target_group_name    = "${var.cluster_name}-ktg"
   asg_name             = "${module.tick.asg_name}"

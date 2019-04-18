@@ -61,7 +61,7 @@ func TestInfluxDBSingleCluster(t *testing.T) {
 
 			rootDir := test_structure.CopyTerraformFolderToTemp(t, "..", "/")
 			examplesDir := fmt.Sprintf("%s/", rootDir)
-			amiDir := fmt.Sprintf("%s/influxdb-ami", examplesDir)
+			amiDir := fmt.Sprintf("%s/tick_stack/influxdb-ami", examplesDir)
 			templatePath := fmt.Sprintf("%s/%s", amiDir, testCase.packerInfo.templatePath)
 
 			defer test_structure.RunTestStage(t, "teardown", func() {

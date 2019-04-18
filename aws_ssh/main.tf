@@ -1,6 +1,6 @@
 # ---------------------------------------------------------------------------------------------------------------------
 # DEPLOY TWO EC2 INSTANCES THAT ALLOWS CONNECTIONS VIA SSH
-# See test/terraform_ssh_example.go for how to write automated tests for this code.
+# See test/aws_ssh_test.go for how to write automated tests for this code.
 # ---------------------------------------------------------------------------------------------------------------------
 
 provider "aws" {
